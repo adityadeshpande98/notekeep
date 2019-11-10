@@ -1,0 +1,31 @@
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Notes</title>
+</head>
+<body>
+
+
+
+<h1>Notes</h1><br><br>
+<a href="/">HOME</a><br><br>
+
+<table border="1" width="600">
+<tr>
+<td>Note</td>
+<td>Delete</td>
+</tr>
+
+{% for publisher in allnotes %}
+<tr>
+<td>{{ publisher.note }}</td>
+<td><form action="{% url 'delete_view' pk=publisher.pk %}" method="POST">
+  {% csrf_token %}
+  <input class="btn btn-default btn-danger" type="submit" value="Delete"/>
+</form></td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>
